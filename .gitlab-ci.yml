@@ -9,9 +9,9 @@ Build:
   before_script:
     - 'call "%PROGRAMFILES(X86)%\Microsoft Visual Studio\2019\Community\Common7\Tools\VsMSBuildCmd.bat"'
     - msbuild /version
-    - "echo #define CI_PIPELINE_IID %CI_PIPELINE_IID% >source/CIBuildSettings.h"
+    - cd ModbusTCPMasterExampleCpp
+    - "echo #define CI_PIPELINE_IID %CI_PIPELINE_IID% >CIBuildSettings.h"
   script:
-    # Create the bin directory if it does not exist
     - cd ModbusTCPMasterExampleCpp
     - msbuild ModbusTCPMasterExampleCpp.sln /p:Configuration="Release" /p:Platform="x86"
   artifacts:
